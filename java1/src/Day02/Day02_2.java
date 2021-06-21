@@ -56,28 +56,7 @@ public class Day02_2 {
 		System.out.println("아이디\t비밀번호\t성명\t이메일");
 		System.out.println(아이디+"\t"+비밀번호+"\t"+성명+"\t"+이메일);
 			// 변수출력시 문자처리 X
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

@@ -46,6 +46,7 @@ public class Day06_2_회원제배열 {
 						if( 회원목록[i][0] == null ) {
 							회원목록[i][0] = 아이디;
 							회원목록[i][1] = 비밀번호;
+							System.err.println("\n[회원가입 완료] " + 아이디 + "님 회원가입 되었습니다 ");
 							break;
 						}
 					}
@@ -116,12 +117,6 @@ public class Day06_2_회원제배열 {
 			else { System.err.println("\n[경고] 알수 없는 번호 입니다 ");}
 		} // while end
 	} // main end 
-	
-	
-	
-	
-	
-	
 	
 	
 	

@@ -43,9 +43,11 @@ public class Day06_2_회원제배열 {
 					System.out.print(" 비밀번호 : ");	String 비밀번호 = scanner.next();
 					for( int i = 0 ; i<회원목록.length ; i++ ) {
 							// i는 0부터 회원목록 배열의 행길이[100] 만큼 1씩 증가하면서 반복
-						회원목록[i][0] = 아이디;
-						회원목록[i][1] = 비밀번호;
-						break;
+						if( 회원목록[i][0] == null ) {
+							회원목록[i][0] = 아이디;
+							회원목록[i][1] = 비밀번호;
+							break;
+						}
 					}
 				}
 			} // 선택 1번 if문 end 
@@ -61,12 +63,44 @@ public class Day06_2_회원제배열 {
 						System.err.println("[로그인성공] " + 아이디 + "님 로그인이 되었습니다 ");
 						로그인체크 = 1;
 						
+						// 모든 회원 목록
+						System.out.println("\n------------ 회원목록 ------------");
+						System.out.println("\t아이디\t비밀번호");
+			
+						for( int j = 0 ; j<회원목록.length ; j++ ) {
+							if(  회원목록[j][0] !=null ) System.out.println("\t"+회원목록[j][0] + "\t" + 회원목록[j][1]);
+						}
+						
 						// 로그인시 메뉴 
 						while( true ) { // 로그인시 메뉴의 반복문 종료 [ 3번을 입력했을때 무한루프 종료 ] 
 							System.out.println("1.회원탈퇴 2.비밀번호변경 3.로그아웃");
 							int 선택2 = scanner.nextInt();
-							if( 선택2 == 1 ) {}
-							else if( 선택2 == 2 ) {}
+							if( 선택2 == 1 ) {
+								// i 는 로그인된 회원의 행위치
+								회원목록[i][0] = null;
+								회원목록[i][1] = null;
+								// 삭제된 인덱스 뒤로 인덱스 한칸씩 당기기 
+								for( int h = i ; h<회원목록.length ; h++ ) {
+									
+									if( 회원목록[h+1][0] != null ) { // 삭제된 회원 뒤로 다음 회원이 있으면 
+										회원목록[h][0] = 회원목록[h+1][0];
+										회원목록[h][1] = 회원목록[h+1][1];
+									}
+									else { // 마지막 회원이면 
+										회원목록[h][0] = null;
+										회원목록[h][1] = null;
+										break; // 가장 가까운 반복문 탈출
+									}
+								}
+								System.out.println("[탈퇴성공] 회원탈퇴 되었습니다");
+								break; // 로그인시 메뉴 while 탈출 
+							}
+							else if( 선택2 == 2 ) {
+								// i : 현재 로그인된 회원의 행위치
+								System.out.println(" -----> 패스워드 변경 화면 ");
+								System.out.println(" 변경할 패스워드 : "); 회원목록[i][1] =  scanner.next();
+								System.out.println("[변경완료] 패스워드가 변경되었습니다 "); break;
+							}
 							else if( 선택2 == 3 ) { 
 								System.err.println("[로그아웃] 로그아웃 합니다");
 								break;

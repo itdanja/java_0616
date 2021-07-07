@@ -109,26 +109,6 @@ public class Day06_3_회원제리스트 {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	} // main end 
 	
 } // class end 

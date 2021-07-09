@@ -59,17 +59,16 @@ public class Member {
 		System.out.print("[[[ 비밀번호 : ");		String 비밀번호 = Day08_Start.scanner.next();
 		System.out.print("[[[ 이름 : ");		String 이름 = Day08_Start.scanner.next();
 		System.out.print("[[[ 이메일 : ");		String 이메일 = Day08_Start.scanner.next();
-		System.out.print("[[[ 연락`처 : ");		String 연락처 = Day08_Start.scanner.next();
+		System.out.print("[[[ 연락처 : ");		String 연락처 = Day08_Start.scanner.next();
 		
 		// 생성자를 이용한 객체 생성 
 		Member member = new Member(아이디, 비밀번호, 이름, 이메일, 연락처);
 		
 		// 방금 회원가입 한 회원을 리스트에 담기 
 		Day08_Start.members.add(member);
-		
+	
 		// 파일에 저장하기 
 		try { // try { } 안에서 예외(오류) 발생시 catch 로 이동 
-			
 			FileOutputStream fileOutputStream = new FileOutputStream( "c:/java/memberlist.txt");
 			for( Member temp : Day08_Start.members ) {
 				String 내보내기 = temp.아이디+","+temp.비밀번호+","+temp.이름+","+
@@ -79,7 +78,6 @@ public class Member {
 		} catch (Exception e) { // Exception : 모든 예외(오류) 예외 처리 
 			return 2;
 		}
-		
 		return 0; // return 정수 0를 반환시키는 메소드를 종료 [ 회원가입 성공 ] 
 	}
 	

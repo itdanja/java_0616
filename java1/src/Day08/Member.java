@@ -2,6 +2,7 @@ package Day08;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.Scanner;
 
 public class Member {
 	
@@ -66,7 +67,41 @@ public class Member {
 		
 		// 방금 회원가입 한 회원을 리스트에 담기 
 		Day08_Start.members.add(member);
+		
+		회원파일처리();
 	
+		return 0; // return 정수 0를 반환시키는 메소드를 종료 [ 회원가입 성공 ] 
+	}
+	
+	
+	// 2. 로그인 하는 메소드 [ 코드의 재활용 ] 
+	
+	public int 로그인() {
+		// int : 반환[return] 타입 
+		
+		System.out.println("[[[[ 로그인 화면 ]]]]");
+		System.out.println("아이디 : ");		String 아이디 = Day08_Start.scanner.next();
+		System.out.println("비밀번호  : ");	String 비밀번호 = Day08_Start.scanner.next();
+		
+		// 기존회원들[리스트]에 동일한 아이디/비밀번호 여부 확인 
+		for( Member member : Day08_Start.members  ) {
+			
+			if( member.아이디.equals(아이디) ) {
+				
+				if( member.비밀번호.equals(비밀번호) ) {
+					// 로그인시 포인트 10점 주기 
+					포인트증가( member );
+					return 0; // 로그인 성공 
+				}
+				else {
+					return 2; // 비밀번호가 다를경우 
+				}
+			}
+		}
+		return 1; // 아이디 없을경우 
+	}
+	
+	public void 회원파일처리( ) {
 		// 파일에 저장하기 
 		try { // try { } 안에서 예외(오류) 발생시 catch 로 이동 
 			FileOutputStream fileOutputStream = new FileOutputStream( "c:/java/memberlist.txt");
@@ -76,11 +111,17 @@ public class Member {
 				fileOutputStream.write( 내보내기.getBytes() );
 			}
 		} catch (Exception e) { // Exception : 모든 예외(오류) 예외 처리 
-			return 2;
 		}
-		return 0; // return 정수 0를 반환시키는 메소드를 종료 [ 회원가입 성공 ] 
 	}
 	
+	public void  포인트증가( Member member ) {
+						// 인수 member	
+		member.포인트 +=10;
+		if( member.포인트 >=100 && member.포인트<=200 ) {
+			member.등급 ="골드";
+		}
+		회원파일처리( );	
+	}
 	
 	
 	

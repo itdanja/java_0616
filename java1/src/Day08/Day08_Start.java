@@ -53,7 +53,6 @@ public class Day08_Start {
 			e.printStackTrace();
 		}
 		
-		
 		while(true) { // 무한루프 시작 [ 5번 입력시 무한루프 종료 ] 
 			
 			Member temp = new Member(); // 빈 회원객체 
@@ -65,21 +64,19 @@ public class Day08_Start {
 				int 메소드결과 = temp.회원가입();
 				if( 메소드결과 == 0 ) System.err.println("\n[[[[ 회원가입성공 : 가입해주셔서 감사합니다 ]]]] ");
 				if( 메소드결과 == 1 ) System.err.println("\n[[[[ 회원가입실패 : 중복된 아이디가 존재합니다(뒤로가기) ]]]] ");
-				if( 메소드결과 == 2 ) System.err.println("\n[[[[ 회원가입실패 : 파일처리 오류[ 관리자에게 문의 ]  ]]]] ");
 			}
-			else if( 선택 == 2 ) {}
+			else if( 선택 == 2 ) {
+				int 메소드결과 = temp.로그인();
+				if( 메소드결과== 0 ) System.err.println("\n[[[[ 로그인성공 : 안녕하세요 ]]]] ");
+				if( 메소드결과== 1 ) System.err.println("\n[[[[ 로그인실패 : 존재하지 않는 아이디 입니다  ]]]] ");
+				if( 메소드결과== 2 ) System.err.println("\n[[[[ 로그인실패 : 비밀번호가 다릅니다  ]]]] ");
+			}
 			else if( 선택 == 3 ) {}
 			else if( 선택 == 4 ) {}
 			else if( 선택 == 5 ) {
 				System.err.println("\n[[[[ 이용해주셔서 감사합니다 ]]]]");
 				break; // 무한루프 종료 
 			}else {}
-			
-			
 		}
-		
 	}
-	
-	
-
 }

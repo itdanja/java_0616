@@ -26,7 +26,13 @@ public class 신한은행 extends 계좌 {
 		System.err.println("\n[[[ 성공 ]]] : 계좌 등록이 되었습니다 ");
 	}
 	
+	@Override
+	public void 입금() {
+		super.입금();
+	}
+	@Override
+	public void 출금() {
+		super.출금();
+	}
 	
-	
-
 }

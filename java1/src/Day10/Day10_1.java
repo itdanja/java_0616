@@ -1,5 +1,7 @@
 package Day10;
 
+import java.util.Scanner;
+
 public class Day10_1 {
 
 	// 예외처리 : 오류 발생시 오류를 다른코드로 처리 방식 
@@ -15,6 +17,11 @@ public class Day10_1 {
 				// 3. NumberFormatException
 			// 2. 예외를 모르는경우
 				// 1. Exception [ 슈퍼클래스 ]
+		
+			// 3. 예외던지기 
+				// 1. throws Exception
+	
+	
 			
 	public static void main(String[] args) {
 		
@@ -76,6 +83,21 @@ public class Day10_1 {
 			System.out.println("[[코드 종료]]");
 		}
 		
+		//문제1
+		
+		while(true) {
+			Scanner scanner = new Scanner(System.in);
+					// new : 메모리 할당 [ 새롭게 메모리 할당 ] 
+			try {
+					System.out.print( "번호 선택 : ");
+					int 선택 = scanner.nextInt();
+			}
+			catch (Exception e) {
+				System.out.println(" [경고] : 숫자만 입력 가능 합니다 ");
+			}finally {
+				System.out.println(" 처리 되었습니다 ");
+			}
+		}
 		
 		
 	}

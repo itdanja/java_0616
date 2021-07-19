@@ -9,8 +9,16 @@ public class Day01_1 {
 		// java에서는 main메소드에 main스레드 기본적으로 포함되어 있음 
 		// 1. 스레드 인터페이스[ 클래스로부터 메모리할당 필요 ] 
 			// implements Runnable
-	
 		// 2. 스레드 클래스 
+			// extends Thread
+		// 3. Thread thread3 = new Thread( new Runnable() );
+	
+		// 4. start() : 스레드 호출 
+			// run() : 스레드실행코드 정의 
+	
+		// * 멀티스레드 : 코드 병행작업 
+			// 컴퓨터 [ 병행작업x ] : 하나씩 처리 
+				// cpu[스케줄링] : 코드 처리 순서					
 	
 	public static void main(String[] args) {
 		
@@ -63,6 +71,33 @@ public class Day01_1 {
 		}
 		
 		System.out.println("-------- 예제3 끝 ");
+		
+		
+		//예4) Runnable[ 인터페이스 ] 
+		Thread thread3 = new Thread( new Runnable() {
+			@Override
+			public void run() {
+				for( int i = 0 ; i<5 ; i++) {
+					toolkit.beep(); // 비프음 소리 	
+					try { // try{ 예외 예상되는코드 }
+						Thread.sleep(1000); // 1초동안 스레드 일시정지
+					}catch (Exception e) {}
+				}
+			}
+		} );
+		
+		thread3.start();
+		
+		for( int i = 0 ; i<5 ;i++ ) {
+			System.out.println("띵4");
+			try {
+				Thread.sleep(1000);
+			}
+			catch (Exception e) {}
+		}
+		
+		System.out.println("-------- 예제4 끝 ");
+		
 		
 		
 		

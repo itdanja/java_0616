@@ -11,6 +11,7 @@ public class Day01_1 {
 			// implements Runnable
 		// 2. 스레드 클래스 
 			// extends Thread
+	
 		// 3. Thread thread3 = new Thread( new Runnable() );
 	
 		// 4. start() : 스레드 호출 
@@ -18,7 +19,14 @@ public class Day01_1 {
 	
 		// * 멀티스레드 : 코드 병행작업 
 			// 컴퓨터 [ 병행작업x ] : 하나씩 처리 
-				// cpu[스케줄링] : 코드 처리 순서					
+				// cpu[스케줄링] : 코드 처리 순서		
+	
+		// 스레드 우선순위 
+			// thread.MAX_PRIORITY : 우선 증가 
+			// thread.MIN_PRIORITY : 우선 감소 
+		
+		// 부가 
+			// .getName() : 스레드 이름 
 	
 	public static void main(String[] args) {
 		

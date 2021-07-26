@@ -1,6 +1,7 @@
 package day03;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 public class Day03_4 {
@@ -11,8 +12,8 @@ public class Day03_4 {
 		
 		// Map 컬렉션  :  <키 , 값>으로 이루어진 한쌍  = 엔트리 
 					// 인덱스 없음 
-			// 1. hashMap : 
-			// 2. hashTable : 
+			// 1. hashMap : 동기화x [ 단일스레드]
+			// 2. hashTable : 동기화o [ 멀티스레드 ] 
 				// 메소드 
 					// 1. .put( 키 , 값 ) : 하나의 엔트리 추가 
 					// 2. .size() : 엔트리 개수 
@@ -49,6 +50,14 @@ public class Day03_4 {
 		}
 		
 		hashMap.clear();
+		
+		
+		Hashtable<String, Integer> hashtable = new Hashtable<>();
+		hashtable.put("유재석", 80);
+		hashtable.put("강호동", 70);
+		hashtable.put("신동엽", 60);
+		
+		System.out.println( hashtable );
 		
 		
 		

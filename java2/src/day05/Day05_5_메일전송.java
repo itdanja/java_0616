@@ -1,6 +1,7 @@
 package day05;
 
 import java.util.Properties;
+import java.util.Scanner;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -43,11 +44,25 @@ public class Day05_5_메일전송 {
 	
 	public static void main(String[] args) {
 				
+		Scanner scanner = new Scanner(System.in);
+		System.out.println(" ------메일 전송 하기---------  ");
+		System.out.print("받는사람 : " ); 	String toemail = scanner.next();
+		// .nextLine(); 문제 : .nextLine(); 앞에 next 있는경우 공백인식 
+			// 문제 해결  : 사이에 scanner.nextLine(); 추가 
+		scanner.nextLine();
+		System.out.print("메일 제목 : "); 	String title = scanner.nextLine();
+		System.out.print("메일 내용 : ");		String contents = scanner.nextLine();
+		
+		sendemail(toemail, title, contents);
+		
+	}
+	
+	// 이메일 보내는 메소드 : 보내는사람 고정 // 받는사람과 제목, 내용 인수로 받기 
+	public static void sendemail( String toemail , String title , String contents ) {
 		// 1. 설정 [ 네이버 기준 ] 
 		String host ="smtp.naver.com"; // 메일 회사 호스트명 [ 해당 사이트내에서 확인가능 ] 
 		String fromemail = "보내는사람아이디@naver.com"; 
 		String frompassword = "패스워드";
-		String toemail = "받는사람 이메일";
 		
 		Properties properties = new Properties(); // 설정 관련 [ map 컬렉션 ] 
 		
@@ -62,21 +77,20 @@ public class Day05_5_메일전송 {
 				return new PasswordAuthentication( fromemail , frompassword );
 			}
 		});
-		
 		// 3. 메일보내기 
 		try {
 			MimeMessage message = new MimeMessage( session ); // 메시지에 인증 처리 
 			message.setFrom( new InternetAddress(fromemail) ); // 예외처리 발생 
 			message.addRecipient(Message.RecipientType.TO , new InternetAddress(toemail) ); // 받는 사람 
-			message.setSubject("java에서 메일보내기 제목 "); // 메일 제목 
-			message.setText("java에서 메일보내는 내용입니다"); // 메일 내용 
+			message.setSubject(title); // 메일 제목 
+			message.setText(contents); // 메일 내용 
 			
 			Transport.send(message);// 메일전송
 			
+			System.out.println(" [[[ 메일 전송 완료 ]]] ");
+			
 		}catch (Exception e) {}
-		
 	}
-	
 	
 	
 	

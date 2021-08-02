@@ -65,7 +65,6 @@ public class Day05_5_메일전송 {
 		String frompassword = "패스워드";
 		
 		Properties properties = new Properties(); // 설정 관련 [ map 컬렉션 ] 
-		
 		properties.put("mail.smtp.host", host ); // host : 메일회사 호스트[ 통신 이름 ] 
 		properties.put("mail.smtp.prot", 587 ); // port : 메일회사 호스트의 smtp port[ 통신 번호 ] 
 		properties.put("mail.smtp.auth", "true"); // 인증받기 ㄴ
@@ -86,7 +85,6 @@ public class Day05_5_메일전송 {
 			message.setText(contents); // 메일 내용 
 			
 			Transport.send(message);// 메일전송
-			
 			System.out.println(" [[[ 메일 전송 완료 ]]] ");
 			
 		}catch (Exception e) {}

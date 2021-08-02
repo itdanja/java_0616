@@ -27,7 +27,7 @@ public class Day05_5_메일전송 {
 		// 3. 탭[메뉴]에서 libraries => add external jars
 		// 4. 위에서 다운로드 받은 파일 2개 선택 추가 
 			// ** 1.8 버전 이상 
-				// 1. 탭[메뉴]에서 libraries => classpath선택 => add external jars
+				// 1. 탭[메뉴]에서 libraries => modulepath선택 => add external jars
 				// 2.  module-info 파일에 아래 추가 
 					/*
 					  		requires activation; 

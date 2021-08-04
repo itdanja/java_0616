@@ -109,9 +109,11 @@ JAVAFX 설치방법
 			1. 해당 프로젝트 오른쪽클릭 => [Build Path] → [configure ] -> [Libraries]-> [Add External Achives]
 	 		2. [ 압출풀었던 폴더 ] => sdk 폴더의 lib 폴더에 들어가서 .jar 파일 모두 선택 [ .zip 파일 제외 ]
 	 		
-		
-		
-
+	
+	3. 씬빌더 : 레이아웃 컨트롤 구성해주는 프로그램 
+		1. https://gluonhq.com/products/scene-builder/
+		2. Windows Installer 64-bit 다운로드
+		3. 설치
 
 
 

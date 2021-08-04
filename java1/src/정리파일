@@ -86,12 +86,28 @@ day01 : 스레드
 day02 : 제네릭 , 컬렉션 프레임워크 
 day03 : 컬렉션 프레임워크 
 day04 : 컬렉션 프레임워크 , API[ String ]
-day05 : API[ String , 날짜/시간 클래스 ] 
+day05 : API[ String , 날짜/시간 클래스 , email 등 ] 
+day06 : javafx [ GUI ]
+day07 : javafx [ GUI ]
+day08 : javafx [ GUI ]
+day09 : 네트워크
+day10 : 네트워크
 
 
+javafx[GUI] 
 
+JAVAFX 설치방법
+	1. 이클립스에서 JAVAFX 설치 
+		1. 이클립스 메뉴 => [ Help ] -> [Eclipse Marketplace]
+		2. javafx 검색 => e(fx)버전 => install(설치간 동의여부 창 나오면 체크) => 설치완료 [ 이클립스 재시작 여부 ] => 재시작
+		3. javafx프로젝트생성 : 메뉴 => file => project [ javase = javase11 ] => javafx
 
+	2. JAVAFX SDK 다운로드 
+		1. https://gluonhq.com/products/javafx
+		2. 압축풀기 
+		3. 현재 프로젝트에 sdk .jar 파일 추가
 
+		
 
 
 

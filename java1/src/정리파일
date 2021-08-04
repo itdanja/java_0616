@@ -106,7 +106,10 @@ JAVAFX 설치방법
 		1. https://gluonhq.com/products/javafx
 		2. 압축풀기 
 		3. 현재 프로젝트에 sdk .jar 파일 추가
-
+			1. 해당 프로젝트 오른쪽클릭 => [Build Path] → [configure ] -> [Libraries]-> [Add External Achives]
+	 		2. [ 압출풀었던 폴더 ] => sdk 폴더의 lib 폴더에 들어가서 .jar 파일 모두 선택 [ .zip 파일 제외 ]
+	 		
+		
 		
 
 

@@ -3,4 +3,5 @@ module javafx {
 	requires javafx.fxml;
 	
 	opens application to javafx.graphics, javafx.fxml;
+	opens Member to javafx.graphics , javafx.fxml;
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Member.LoginController">
+   <children>
+      <ImageView fitHeight="462.0" fitWidth="372.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@background.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtid" layoutX="45.0" layoutY="234.0" prefHeight="31.0" prefWidth="217.0" />
+      <PasswordField fx:id="txtpassword" layoutX="46.0" layoutY="283.0" prefHeight="31.0" prefWidth="217.0" />
+      <Label fx:id="btnlogin" layoutX="194.0" layoutY="326.0" onMouseClicked="#login" prefHeight="31.0" prefWidth="69.0" text="login">
+         <font>
+            <Font name="HYGungSo-Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="btnsignup" layoutX="212.0" layoutY="217.0" onMouseClicked="#signup" prefHeight="9.0" prefWidth="51.0" text="회원가입">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="btnfindid" layoutX="46.0" layoutY="382.0" onMouseClicked="#findid" prefHeight="14.0" prefWidth="69.0" text="아이디찾기">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="btnfindpassword" layoutX="46.0" layoutY="405.0" onMouseClicked="#findpassword" prefHeight="14.0" prefWidth="83.0" text="패스워드찾기">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="176.0" fitWidth="227.0" layoutX="41.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblinfo" layoutX="46.0" layoutY="211.0" prefHeight="20.0" prefWidth="156.0" textFill="#e80a57" />
+   </children>
+</AnchorPane>

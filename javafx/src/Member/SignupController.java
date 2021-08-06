@@ -1,5 +1,6 @@
 package Member;
 
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -50,15 +51,27 @@ public class SignupController implements Initializable {
     		lblinfo.setText(" 경고 : 이메일형식으로 입력해주세요 [@포함] ");
     		return; // 메소드 종료 
     	}
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+    
+    	// 파일처리 
+    		// 1. 입력받은 데이터 => 객체 
+    		User user = new User(id, password, email);
+	        	// 리스트 담기 
+	        	Main.userlist.add(user);
+    		// 2. 객체 => 파일에 저장 
+    		try {
+    			FileOutputStream fileOutputStream = new 	
+    					FileOutputStream("C:/Users/User/git/java_0616/javafx/src/Member/userlist.txt" , true); // 무조건 예외발생
+    																				// 파일명경로 , true : 이어쓰기 
+    																				// 파일명경로 , false[생략] : 새로작성 
+    			// 스트림 [ 프로그램 -> 외부장치[파일] 통신 흐름 ]
+    				// 이동단위 : 바이트 
+    			String string = id+","+password+","+email+"\n";
+    					// 필드구분용 [,]		회원구분용[\n]
+    			fileOutputStream.write( string.getBytes() ); // 문자열을 바이트열로 변환후 내보내기 
+    			fileOutputStream.close();
+    		}catch (Exception e) {} 
+    		
+    	lblinfo.setText(" [ 회원가입 완료 ] 감사합니다 " );
     	
     }
 

@@ -1,5 +1,8 @@
 package Member;
 
+import java.io.FileInputStream;
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,8 +12,27 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	
 	
+	public static ArrayList<User> userlist = new ArrayList<User>();
+	
+	
+	
 	@Override
 	public void start(Stage stage) throws Exception {
+	
+		// 파일에서 회원 불러오기 
+		FileInputStream fileInputStream = new FileInputStream("C:/Users/User/git/java_0616/javafx/src/Member/userlist.txt");
+		byte[] bs = new byte[1024]; // 바이트 배열 선언 
+		fileInputStream.read( bs ); // 읽기
+		String string = new String(bs);// 바이트배열 => 문자열 변환
+
+		String[] string2 = string.split("\n"); // 회원별 분류
+		for( int i = 0 ; i<string2.length-1 ; i++ ) {
+			String[] string3 = string2[i].split(","); // 각 회원의 필드 분류 
+			User user = new User( string3[0] , string3[1] , string3[2] ); // 객체 
+			userlist.add(user); // 리스트에 객체 담기 
+		}
+		fileInputStream.close(); // 파일 닫기 
+
 		Parent parent = FXMLLoader.load(getClass().getResource("login.fxml") );
 		Scene scene = new Scene(parent);
 		stage.setScene(scene);
@@ -23,9 +45,7 @@ public class Main extends Application {
 		launch(args);
 	}
 	
-	
-	
-	
+		
 	/*
 	 *  login.fxml 
 	 * 	

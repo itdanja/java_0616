@@ -53,6 +53,7 @@ public class LoginController implements Initializable {
     		Scene scene = new Scene(parent);
     		stage.setScene(scene);
     		stage.setTitle("아이다스 아이디찾기");
+    		stage.setResizable(false);
     		stage.show();
     	}
     	catch (Exception e) {} 

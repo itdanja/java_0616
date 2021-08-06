@@ -39,8 +39,15 @@ public class SignupController implements Initializable {
     	String passwordconfirm = txtpasswordconfirm.getText();
     	String email = txtemail.getText();
     	
-    	// 1. 동일한 아이디 [ 중복체크 ]
-    	
+    	// 1. 동일한 아이디 [ 중복체크 ] : 리스트에서 동일한 아이디 찾기 
+    	for( User user : Main.userlist ) {
+    		// for( 임시객체 : 리스트/배열 ) : 리스트내 모든 요소[객체] 하나씩 임시 객체 대입
+    		if( user.getId().equals(id) ) {
+    			// 리스트내 요소의 id 와 방금 입력한 아이디와 같으면 
+    			lblinfo.setText(" 경고 : 이미 사용중인 아이디 입니다 " );
+    			return; // 메소드 종료
+    		}
+    	}
     	// 2. 비밀번호가 일치하지 않을경우 
     	if( !password.equals(passwordconfirm) ) {
     		lblinfo.setText(" 경고 : 두 패스워드가 일치하지 않습니다 " );
@@ -51,7 +58,7 @@ public class SignupController implements Initializable {
     		lblinfo.setText(" 경고 : 이메일형식으로 입력해주세요 [@포함] ");
     		return; // 메소드 종료 
     	}
-    
+   
     	// 파일처리 
     		// 1. 입력받은 데이터 => 객체 
     		User user = new User(id, password, email);
@@ -72,6 +79,8 @@ public class SignupController implements Initializable {
     		}catch (Exception e) {} 
     		
     	lblinfo.setText(" [ 회원가입 완료 ] 감사합니다 " );
+    	
+    	
     	
     }
 

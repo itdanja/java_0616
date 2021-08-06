@@ -57,19 +57,20 @@ public class LoginController implements Initializable {
 
     @FXML
     void login(MouseEvent event) {
-    	System.out.println("[[ 로그인 처리 ]]");
-    	// 아이디가 admin 이고 비밀번호가 1234인경우 
+    	// 1. 로그인창에서 입력한 아이디와 비밀번호가 리스트내 존재하면 로그인 성공 
     	
-    	if( txtid.getText().equals("admin") &&  		
-    		txtpassword.getText().equals("1234") ) {
-
-    		System.out.println(" [[[ 로그인 성공 ]]]");
-    		// 페이지 변경 
-    		return;
-    	}
-    	// 레이블에 메시지 넣기 
-    	lblinfo.setText("동일한 회원정보가 없습니다");
-    
+	    for( User user : Main.userlist ) {
+	    	
+	    	if( txtid.getText().equals( user.getId() ) &&  		
+		    		txtpassword.getText().equals( user.getPassword() ) ) {
+	    		
+	    		System.out.println(" [[[ 로그인 성공 ]]]");
+	    		// 페이지 변경 
+	    		return;
+	    	}
+	    }
+	    	// 레이블에 메시지 넣기 
+	    	lblinfo.setText("동일한 회원정보가 없습니다");
     }
 
     @FXML

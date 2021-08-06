@@ -45,6 +45,21 @@ public class Main extends Application {
 	 * 
 	 */
 	
+	/*
+	 * 	signup.fxml
+	 * 
+	 * 		fx:id 
+	 * 
+	 * 		1. txtid
+	 * 		2. txtpassword
+	 * 		3. txtpasswordconfirm
+	 * 		4. txtemail
+	 * 		5. btnsignup
+	 * 			OnMouseClicked : signup
+	 * 		6. lblinfo
+	 * 
+	 */
+	
 	
 	
 	

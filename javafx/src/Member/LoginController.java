@@ -4,11 +4,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 									// 초기값 인터페이스 
@@ -69,7 +74,22 @@ public class LoginController implements Initializable {
 
     @FXML
     void signup(MouseEvent event) {
-    	System.out.println("[[ 회원가입 페이지로 이동 ]]");
+    	try {
+    		// 1. fxml 가져오기
+    		Parent parent = FXMLLoader.load( getClass().getResource("signup.fxml") ); // 무조건 예외처리
+    		// 2. 스테이지 만들기
+    		Stage stage = new Stage();
+    		// 3. 씬 만들기 => parent 넣기 
+    		Scene scene = new Scene(parent);
+    		// 4. 스페이지 => 씬 넣기 
+    		stage.setScene(scene);
+    		stage.setTitle("아디다스 회원가입");
+    		stage.setResizable(false);
+    		stage.show();
+    	}
+    	catch (Exception e) {
+			// TODO: handle exception
+		}    	
     }
 	
     

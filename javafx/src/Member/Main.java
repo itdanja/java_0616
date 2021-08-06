@@ -91,6 +91,19 @@ public class Main extends Application {
 	 * 
 	 */
 	
+	/*
+	 *  findpassword.fxml
+	 *  
+	 *  	fx : id
+	 *  	1. txtid
+	 *  	2. txtemail
+	 * 		3. btnfindpassword
+	 * 			OnMouseClicked : findpassword
+	 * 		4. lblinfo
+	 * 
+	 * 
+	 */
+	
 	
 	
 	

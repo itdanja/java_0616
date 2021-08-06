@@ -61,7 +61,17 @@ public class LoginController implements Initializable {
 
     @FXML
     void findpassword(MouseEvent event) {
-    	System.out.println("[[ 패스워드 찾기 페이지로 이동 ]]");
+    	try {
+    		Parent parent = FXMLLoader.load( getClass().getResource("findpassword.fxml"));
+    		Stage stage = new Stage();
+    		Scene scene = new Scene(parent);
+    		stage.setScene(scene);
+    		stage.setTitle("아이다스 비밀번호찾기");
+    		stage.setResizable(false);
+    		stage.show();
+    	}
+    	catch (Exception e) {}
+    	
     }
 
     @FXML

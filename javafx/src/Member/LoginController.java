@@ -47,7 +47,15 @@ public class LoginController implements Initializable {
 
     @FXML
     void findid(MouseEvent event) {
-    	System.out.println("[[ 아이디 찾기 페이지로 이동 ]]");
+    	try {
+    		Parent parent = FXMLLoader.load( getClass().getResource("findid.fxml") );
+    		Stage stage = new Stage();
+    		Scene scene = new Scene(parent);
+    		stage.setScene(scene);
+    		stage.setTitle("아이다스 아이디찾기");
+    		stage.show();
+    	}
+    	catch (Exception e) {} 
     }
 
     @FXML

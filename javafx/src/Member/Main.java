@@ -80,6 +80,17 @@ public class Main extends Application {
 	 * 
 	 */
 	
+	/*
+	 * 	findid.fxml
+	 * 
+	 * 	fx :id
+	 * 		1.txtemail
+	 * 		2.btnfindid
+	 * 			OnMouseClicked : findid
+	 * 		3.lblinfo
+	 * 
+	 */
+	
 	
 	
 	

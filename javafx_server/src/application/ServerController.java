@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
+
 public class ServerController implements Initializable {
 	
 	// 1. 스레드풀 사용
@@ -30,7 +31,7 @@ public class ServerController implements Initializable {
 	// 3. 서버소켓 
 	ServerSocket serversocket; // 서버소켓 선언 
 	
-	// 4. 서버 실행 메소드 
+	// 4. 서버 실행 메소드 [ 1.서버소켓 => 2.서버바인딩(ip,port할당) 3.클라이언트 접속 기다림 => 4.클라이언트 리스트 담기 ]
 	public void serverstart() {
 		try {
 			// 1. 서버실행시 서버소켓의 메모리 할당
@@ -48,8 +49,15 @@ public class ServerController implements Initializable {
 						Socket socket = serversocket.accept();
 						// 2. 허가된 클라이언트를 리스트에 담기 
 						clients.add( new Client(socket) ); 
+						// *
+						Platform.runLater( () -> txtserver.appendText(socket.getLocalAddress()+"\n"));
+						Platform.runLater( () -> txtserver.appendText("현재 접속한 클라이언트수 : " + clients.size()) );
+						
 					}
-				}catch (Exception e) {}				
+				}catch (Exception e) {
+					System.out.println("[[ 오류 발생 : 서버 종료 ]]");
+					serverstop();
+				}				
 			}
 		}; // runnable end
 		
@@ -58,7 +66,6 @@ public class ServerController implements Initializable {
 	}
 	// 5. 서버 종료 메소드 
 	public void serverstop() {
-		
 		try {
 			// 1. 현재 접속된 클라이언트 소켓 모두 종료
 			for( Client client : clients ) {
@@ -68,8 +75,8 @@ public class ServerController implements Initializable {
 			serversocket.close();
 			// 3. 스레드풀 종료
 			threadpool.shutdown();
-			
-		}catch (Exception e) {}
+		}catch (Exception e) {
+		}
 	}
 	
 	// 씬빌더 fx:id 불러오기

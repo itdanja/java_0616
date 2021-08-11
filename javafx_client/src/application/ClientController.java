@@ -23,24 +23,29 @@ public class ClientController implements Initializable {
 	public void clientstart() {
 		// 1. 소켓생성 --> 2.서버소켓으로 부터 연결요청 
 			
-		Thread thread = new Thread() { // 멀티스레드 
+		Thread thread = new Thread() { // 멀티스레드 [ 스레드풀x ]
 			@Override // 재정의
 			public void run() {
 				try {
-					socket = new Socket("127.0.0.1" , 1234); // 서버소켓의 ip와 post 
+					socket = new Socket("127.0.0.1" , 1234); // 서버소켓의 ip와 post 연결 
+					send(txtname.getText() + "님 입장했습니다\n");
 					receive();
-				}catch (Exception e) {}
+				}catch (Exception e) {
+					Platform.runLater( () -> { txtcontents.appendText("서버가 닫혀있습니다\n"); });
+					clientstop();
+				}
 			}
 			
 		}; // 스레드 괄호 end 
 		thread.start(); // run메소드(멀티스레드 로직 ) <---- start( run메소드호출 ) 
-		
 	}
 	// 3. 클라이언트 종료 메소드 
 	public void clientstop() {
 		try {
 			socket.close(); // 소켓 닫기 
-		}catch (Exception e) {}
+		}catch (Exception e) {
+			clientstop();
+		}
 	}
 	
 	// 4. 메시지 보내는 메소드 
@@ -53,7 +58,9 @@ public class ClientController implements Initializable {
 					byte[] bytes = msg.getBytes(); // 문자열 -> 바이트 
 					outputStream.write(bytes); // 해당 바이트 내보내기 
 					outputStream.flush(); // 스트림 초기화
-				}catch (Exception e) {}
+				}catch (Exception e) {
+					clientstop();
+				}
 			}
 		}; // 쓰레드 끝 
 		thread.start();
@@ -69,9 +76,12 @@ public class ClientController implements Initializable {
 				String msg  = new String(bytes); // 바이트 => 문자열 
 				// 받은 메시지를 메시지창에 띄우기 
 					//Platform.runLater( () -> {실행코드} );
+				
 				Platform.runLater( () -> { txtcontents.appendText(msg); } );
-			
-			}catch (Exception e) {}
+				
+			}catch (Exception e) {
+				clientstop();
+			}
 		}
 	}
 	
@@ -101,6 +111,10 @@ public class ClientController implements Initializable {
     @FXML
     void connect(ActionEvent event) {
     	if( btnconnect.getText().equals("접속") ) {
+    		if( txtname.getText().equals("") ) {
+    			Platform.runLater( () -> txtcontents.appendText("[접속불가] 닉네임 입력해주세요 \n"));
+    			return;
+    		}
     		//1. 클라이언트 실행 
     			clientstart();
     		Platform.runLater( () -> txtcontents.appendText("[채팅방 접속]\n"));

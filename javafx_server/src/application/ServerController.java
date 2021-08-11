@@ -1,9 +1,13 @@
 package application;
 
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -24,11 +28,49 @@ public class ServerController implements Initializable {
 		// vector 사용한 이유 : 멀티스레드[동기화:스레드 처리순서 ]
 			// arraylist : 단일스레드[동기화x]
 	// 3. 서버소켓 
+	ServerSocket serversocket; // 서버소켓 선언 
 	
 	// 4. 서버 실행 메소드 
-	
+	public void serverstart() {
+		try {
+			// 1. 서버실행시 서버소켓의 메모리 할당
+			serversocket = new ServerSocket();
+			// 2. 서버 바인딩 [ 서버소켓 구축 ip , port ]
+			serversocket.bind( new InetSocketAddress("127.0.0.1" , 1234));
+		}catch (Exception e) {}
+		
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					while(true) {
+						// 1. 클라이언트 접속 요청시 허가 
+						Socket socket = serversocket.accept();
+						// 2. 허가된 클라이언트를 리스트에 담기 
+						clients.add( new Client(socket) ); 
+					}
+				}catch (Exception e) {}				
+			}
+		}; // runnable end
+		
+		threadpool = Executors.newCachedThreadPool(); // 스레드풀 인터페이스에 메모리 할당 
+		threadpool.submit(runnable); // 스레드풀에 멀티스레드 추가
+	}
 	// 5. 서버 종료 메소드 
-	
+	public void serverstop() {
+		
+		try {
+			// 1. 현재 접속된 클라이언트 소켓 모두 종료
+			for( Client client : clients ) {
+				client.socket.close();
+			}
+			// 2.서버소켓 종료
+			serversocket.close();
+			// 3. 스레드풀 종료
+			threadpool.shutdown();
+			
+		}catch (Exception e) {}
+	}
 	
 	// 씬빌더 fx:id 불러오기
     @FXML
@@ -43,7 +85,7 @@ public class ServerController implements Initializable {
     	if( btnstart.getText().equals("서버실행") ) {
     		// 버튼의 내용이 서버실행이면
     			// 1. 서버실행 메소드 시작 
-    				// 미구현
+    				serverstart();
     			// 2. 메시지창에 내용 띄우기 
     				//Platform.runLater( () -> {실행코드});
     						// 람다식[익명메소드] : 인수 -> 실행코드
@@ -54,7 +96,7 @@ public class ServerController implements Initializable {
     			} );
     	}else { // 버튼의 내용이 서버실행이 아니면 
     			// 1. 서버중지 
-    				// 미구현
+    				serverstop();
     			// 2. 메시지창에 내용 띄우기 
     			Platform.runLater( () -> { 
     				String msg ="[서버중지]\n";

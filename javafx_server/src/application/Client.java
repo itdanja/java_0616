@@ -42,9 +42,7 @@ public class Client {
 	
 	// 4. 메시지 보내는 메소드 
 	public void send( String msg ) {
-		
 		Runnable runnable = new Runnable() {
-			
 			@Override
 			public void run() {
 				

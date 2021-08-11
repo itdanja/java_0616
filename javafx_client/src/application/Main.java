@@ -19,7 +19,7 @@ public class Main extends Application {
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("kakao talk");
 		// 이미지 가져오기 
-			Image image = new Image("file:C:/Users/User/Desktop/H/java0616/javafx_/src/application/kakao.png");
+			Image image = new Image("file:C:/Users/User/git/java_0616/javafx_client/src/application/kakao.png");
 			// 스테이지 아이콘 넣기 
 			primaryStage.getIcons().add( image);
 		primaryStage.show();
@@ -33,7 +33,10 @@ public class Main extends Application {
 	 * 
 	 * 1. 씬빌더 UI 작성 [ FX:ID ]
 	 * 2. Parent 클래스 [ fxml파일을 담아주는 객체 ] 
-	 * 		* load 안되는경우 => 모듈인포에 라이브러리 등록
+	 * 		* load 안되는경우 => 모듈인포에 라이브러리 등록 requires javafx.fxml;
+	 * 3. 컨트롤러 작성
+	 * 4. fxml과 컨트롤러 연결 
+	 * 
 	 * 
 	 * fx:id
 	 * 

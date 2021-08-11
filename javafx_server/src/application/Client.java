@@ -23,11 +23,9 @@ public class Client {
 				try {
 					while( true ) {
 						InputStream inputStream = socket.getInputStream(); // 소켓 입력스트림
-						byte[] buffer = new byte[1000]; // 바이트 배열 정의
-						inputStream.read(buffer); // 입력스트림을 읽어와서 바이트배열에 담기 
-						
-						String msg = new String( buffer ); // 바이트 => 문자열
-						
+						byte[] bytes = new byte[1000]; // 바이트 배열 정의
+						inputStream.read( bytes); // 입력스트림을 읽어와서 바이트배열에 담기 
+						String msg = new String( bytes ); // 바이트 => 문자열
 						// 서버가 받은 메시지를 접속된 모든 클라이언트에게 전달
 						for( Client client : ServerController.clients ) {
 							client.send(msg);
@@ -48,8 +46,8 @@ public class Client {
 				
 				try {
 					OutputStream outputStream = socket.getOutputStream();// 출력 스트림
-					byte[] buffer = msg.getBytes(); // 받은 메시지를 바이트 변환
-					outputStream.write(buffer); // 받은 메시지를 내보내기
+					byte[] bytes = msg.getBytes(); // 받은 메시지를 바이트 변환
+					outputStream.write(bytes); // 받은 메시지를 내보내기
 					outputStream.flush(); // 버퍼 초기화 
 				}catch (Exception e) {}
 			}

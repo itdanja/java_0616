@@ -102,7 +102,6 @@ public class ServerController implements Initializable {
     				String msg ="[서버중지]\n";
     				txtserver.appendText(msg);
     				btnstart.setText("서버실행");
-    				
     			});
     	}
     }

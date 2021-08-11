@@ -2,6 +2,8 @@ package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Vector;
+import java.util.concurrent.ExecutorService;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -13,9 +15,14 @@ import javafx.scene.control.TextArea;
 public class ServerController implements Initializable {
 	
 	// 1. 스레드풀 사용
-	
+		// 여러명의 클라이언트가 동시에 요청 => 과부하 => 순서 매기기 
+		// 여러개의 쓰레드의 요청에 순서 매겨서 하나씩 처리 
+	public static ExecutorService threadpool;
+			// 스레드풀 구현 인터페이스 :  ExecutorService
 	// 2. 접속된 클라이언트 저장하기 위한 리스트 
-	
+	public static Vector<Client> clients = new Vector<>();  
+		// vector 사용한 이유 : 멀티스레드[동기화:스레드 처리순서 ]
+			// arraylist : 단일스레드[동기화x]
 	// 3. 서버소켓 
 	
 	// 4. 서버 실행 메소드 
